@@ -2,7 +2,7 @@ import { Routes } from "@angular/router";
 
 const moviesRoutes: Routes = [
     {
-        path: 'movies',
+        path: '',
         loadComponent: () => import('./movies.component').then(m => m.MoviesComponent)
     },
     {

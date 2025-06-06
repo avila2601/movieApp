@@ -2,7 +2,7 @@ import { Route } from '@angular/router';
 
 export const appRoutes: Route[] = [
   {
-    path: '',
+    path: 'movies',
     loadChildren: () => import('./features/movies/movies.routes').then(m => m.moviesRoutes),
   },
   {
