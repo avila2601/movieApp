@@ -1,0 +1,21 @@
+<nav class="fixed top-0 z-50 w-full bg-gradient-to-b from-black/50 to-transparent">
+  <div class ="px-4 py-4 md:px-10">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <img src="assets/images/logo.png" alt="Netflix Logo" class="h-8">
+        <div class="hidden ml-8 space-x-8 md:flex">
+          <a [routerLink]="['/']" routerLinkActive="!text-netflix-red" class="text-white transition-colors hover:text-netflix-gray">Home</a>
+          <a [routerLink]="['/movies']" routerLinkActive="!text-netflix-red" class="text-white transition-colors hover:text-netflix-gray">Movies</a>
+          <a [routerLink]="['/my-list']" routerLinkActive="!text-netflix-red" class="text-white transition-colors hover:text-netflix-gray">My List</a>
+        </div>
+      </div>
+
+      <!-- TODO: Add search bar -->
+      <div class="flex items-center space-x-4">
+        <div class="relative">
+          <!-- TODO: Search component -->
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
