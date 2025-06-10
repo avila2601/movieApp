@@ -19,14 +19,12 @@ export class MoviesComponent  {
 
  @HostListener('window:scroll')
  onScroll(): void {
+    if (!this.isLoading() && this.hasMorePages()) {
+      const scrollPosition = window.innerHeight + window.scrollY;
+      const scrollThreshold = document.documentElement.scrollHeight - 200;
 
-if (this.isLoading() || !this.hasMorePages()) {
-
-  const scrollPosition = window.innerHeight + window.scrollY;
-  const scrollThreshold = document.documentElement.scrollHeight;
-
-  if (scrollPosition >= scrollThreshold) {
-    this._moviesService.getMovies();
+      if (scrollPosition >= scrollThreshold) {
+        this._moviesService.getMovies();
       }
     }
   }

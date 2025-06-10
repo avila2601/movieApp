@@ -21,6 +21,7 @@ private readonly _http = inject(HttpClient);
 
 constructor() {
   this.getMovies();
+  this.getTrending();
 }
 
 getMovieById(MovieId: string): Observable<MovieResponse> {
@@ -38,5 +39,25 @@ getMovies(): void {
       this.isLoading.set(false);
     }))
   .subscribe();
+}
+
+getTrending(): void {
+  this._http.get<MovieResponse>(`${this._apiUrl}/trending/movie/day?api_key=${this._apiKey}`)
+  .pipe(
+    tap((movies:MovieResponse) => this.trendingMovies.set(movies.results)),
+    tap(() => this.setRandomMovie())
+  )
+  .subscribe();
+}
+
+setRandomMovie(): void {
+  const trendingLength = this.trendingMovies().length;
+  const randomIndex = this._getRandonInt(0, trendingLength);
+  const randomMovie = this.trendingMovies()[randomIndex];
+  this.selectedMovie.set(randomMovie);
+}
+
+private _getRandonInt(min = 0, max = 50): number {
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 }

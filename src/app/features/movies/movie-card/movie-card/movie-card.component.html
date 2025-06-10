@@ -1,0 +1,13 @@
+<div class="cursor-pointer" role="button">
+<img [src]="getImageUrl()" (error)="setImageError(true)" [alt]="movie().title" class="aspecto-[2/3]" />
+<div class="movie-card-overlay">
+  <div class="movie-card-content">
+    <h3 class="mb-2 text-lg font-bold">
+      {{ movie().title }}
+    </h3>
+    <p class="text-sm text-gray-300 line-clamp-2">
+      {{ movie().overview }}
+    </p>
+  </div>
+</div>
+</div>
