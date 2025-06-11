@@ -1,12 +1,34 @@
-<nav class="fixed top-0 z-50 w-full bg-gradient-to-b from-black/50 to-transparent">
-  <div class ="px-4 py-4 md:px-10">
+<nav
+  class="fixed top-0 z-50 w-full bg-gradient-to-b from-black/50 to-transparent"
+>
+  <div class="px-4 py-4 md:px-10">
     <div class="flex items-center justify-between">
       <div class="flex items-center">
-        <img src="assets/images/logo.png" alt="Netflix Logo" class="h-8">
+        <img
+          src="https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png?w=700&h=456"
+          alt="Netflix Logo"
+          class="h-10 w-auto object-contain rounded-full hover:scale-125 transition-all duration-300"
+        />
         <div class="hidden ml-8 space-x-8 md:flex">
-          <a [routerLink]="['/']" routerLinkActive="!text-netflix-red" class="text-white transition-colors hover:text-netflix-gray">Home</a>
-          <a [routerLink]="['/movies']" routerLinkActive="!text-netflix-red" class="text-white transition-colors hover:text-netflix-gray">Movies</a>
-          <a [routerLink]="['/my-list']" routerLinkActive="!text-netflix-red" class="text-white transition-colors hover:text-netflix-gray">My List</a>
+          <a
+            [routerLink]="['/']"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="!text-netflix-red"
+            class="text-white transition-colors hover:text-netflix-gray"
+            >Home</a
+          >
+          <a
+            [routerLink]="['/movies']"
+            routerLinkActive="!text-netflix-red"
+            class="text-white transition-colors hover:text-netflix-gray"
+            >Movies</a
+          >
+          <a
+            [routerLink]="['/my-list']"
+            routerLinkActive="!text-netflix-red"
+            class="text-white transition-colors hover:text-netflix-gray"
+            >My List</a
+          >
         </div>
       </div>
 
