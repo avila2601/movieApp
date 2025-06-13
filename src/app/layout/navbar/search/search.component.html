@@ -1,3 +1,13 @@
-<p>
-  search works!
-</p>
+<div class="relative.search-container">
+  <input type="text" class="py-2 pl-4 text-white border border-gray-700 rounded-md w-80 bg-black/60 focus:outline-none focus:border-white" placeholder="Buscar..." (input)="onSearchInput($event)" />
+<ul class="absolute z-50 w-full mt-2 rouded-md shadow-lg search-results bg-black/90">
+@for (movie of movies().slice(0, 10); track movie.id) {
+  <li tabindex="0" (click)="goToDetails(movie.id)" (keyup.enter)="goToDetails(movie.id)" class="flex items-center p-2 cursor-pointer rounded-md hover:bg-netflix-red/20">
+    <img [src]="getImage(movie.poster_path)" alt="{{movie.title}}" class="w-12 h-12 mr-2">
+    <span>{{movie.title}} - {{movie.release_date | date:'yyyy'}}</span>
+  </li>
+}
+
+</ul>
+
+</div>

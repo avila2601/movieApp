@@ -24,8 +24,8 @@ constructor() {
   this.getTrending();
 }
 
-getMovieById(MovieId: string): Observable<MovieResponse> {
-  return this._http.get<MovieResponse>(`${this._apiUrl}/movie/${MovieId}?api_key=${this._apiKey}`);
+getMovieById(MovieId: string): Observable<Movie> {
+  return this._http.get<Movie>(`${this._apiUrl}/movie/${MovieId}?api_key=${this._apiKey}`);
 }
 
 getMovies(): void {

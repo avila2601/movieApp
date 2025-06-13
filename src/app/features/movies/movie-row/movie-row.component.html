@@ -1,0 +1,11 @@
+<div class="px-4 mt-4 md:px-16">
+  <h2 class="mb-4 text-xl font-semibold text-white md:text-2xl">{{title()}}</h2>
+  <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+    @for (movie of movies().slice(0, 4); track movie.id) {
+      <div class="relative transition duration-200 ease-in transform cursor-pointer group sm:hover:scale-105">
+        <img [src]="getImageUrl(movie.poster_path)" [alt]="movie.title" class="object-cover w-full rounded-md">
+
+  </div>
+    }
+  </div>
+</div>
