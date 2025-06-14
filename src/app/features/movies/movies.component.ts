@@ -1,6 +1,6 @@
 import { Component, computed, HostListener, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { MovieCardComponent } from './movie-card/movie-card/movie-card.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MovieRowComponent } from "./movie-row/movie-row.component";
 import { MoviesService } from './movies.service';
 
@@ -18,6 +18,8 @@ export class MoviesComponent  {
  private readonly _moviesService = inject(MoviesService);
 
  readonly movies = this._moviesService.movies;
+
+ trendingMovies = computed (() => this._moviesService.trendingMovies());
 
  @HostListener('window:scroll')
  onScroll(): void {

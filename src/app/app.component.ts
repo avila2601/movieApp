@@ -9,7 +9,6 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
   standalone: true,
   imports: [RouterOutlet, HeroComponent, NavbarComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   private readonly _movieService = inject(MoviesService);

@@ -1,12 +1,17 @@
-<app-movie-row [title]="'Popular Movies'" [movies]="movies()"/>
+<app-movie-row [title]="'Popular Movies'" [movies]="trendingMovies()"/>
+@defer (on viewport) {
+  <div class="grid grid-col-2 gap-4 px-4 mx-auto mt-6 max-w-7xl md:grid-cols-4 lg:grid-cols-6">
 
-<div class="grid grid-col-2 gap-4 px-4 mx-auto mt-6 max-w-7xl md:grid-cols-4 lg:grid-cols-6">
+    @for (movie of movies(); track $index) {
 
-  @for (movie of movies(); track $index) {
-
-<a [routerLink]="['/movies', movie.id]">
-  <app-movie-card [movie]="movie" class="w-full" />
-</a>
-  }
-
-</div>
+  <a [routerLink]="['/movies', movie.id]">
+    <app-movie-card [movie]="movie" class="w-full" />
+  </a>
+    }
+  </div>
+}
+@placeholder {
+  <div class="flex justify-center p-4">
+    <div class="w-8 h-8 border-b-2 border-white rounded-full animate-spin"></div>
+  </div>
+}
