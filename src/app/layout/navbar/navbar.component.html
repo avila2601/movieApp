@@ -11,16 +11,10 @@
         />
         <div class="hidden ml-8 space-x-8 md:flex">
           <a
-            [routerLink]="['/']"
-            [routerLinkActiveOptions]="{ exact: true }"
-            routerLinkActive="!text-netflix-red"
-            class="text-white transition-colors hover:text-netflix-gray"
-            >Home</a
-          >
-          <a
             [routerLink]="['/movies']"
             routerLinkActive="!text-netflix-red"
             class="text-white transition-colors hover:text-netflix-gray"
+            (click)="goMovies()"
             >Movies</a
           >
           <a

@@ -24,7 +24,15 @@ export class MovieDetailsComponent  {
   })
 
   goBack(): void {
-    this._router.navigate(['/..']);
+    this._router.navigate(['/..']).then(() => {
+      const scroll = sessionStorage.getItem('movie-scroll');
+      if (scroll) {
+        setTimeout(() => {
+          window.scrollTo({ top: parseInt(scroll, 10), behavior: 'smooth' });
+          sessionStorage.removeItem('movie-scroll');
+        }, 100);
+      }
+    });
   }
 
   getImageUrl(posterPath: string | null): string {
