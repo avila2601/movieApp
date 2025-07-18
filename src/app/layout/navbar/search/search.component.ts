@@ -3,13 +3,13 @@ import { Router } from '@angular/router';
 import { MoviesService } from '../../../features/movies/movies.service';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { Movie } from '../../../features/movies/models/movies.interface';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgIf } from '@angular/common';
 import { ImageService } from '../../../shared/image.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
-  imports: [DatePipe, FormsModule],
+  imports: [DatePipe, FormsModule, NgIf],
   templateUrl: './search.component.html',
 })
 export class SearchComponent {

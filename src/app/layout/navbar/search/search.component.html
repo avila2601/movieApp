@@ -1,13 +1,38 @@
-<div class="relative.search-container">
-  <input type="text" class="py-2 pl-4 text-white border border-gray-700 rounded-md w-80 bg-black/60 focus:outline-none focus:border-white" placeholder="Buscar..." [(ngModel)]="searchQuery" />
-<ul class="absolute z-50 w-full mt-2 rouded-md shadow-lg search-results bg-black/90">
-@for (movie of movies().slice(0, 10); track movie.id) {
-  <li tabindex="0" (click)="goToDetails(movie.id)" (keyup.enter)="goToDetails(movie.id)" class="flex items-center p-2 cursor-pointer rounded-md hover:bg-netflix-red/20">
-    <img [src]="getImageUrl(movie.poster_path)" alt="{{movie.title}}" class="w-12 h-12 mr-2">
-    <span>{{movie.title}} - {{movie.release_date | date:'yyyy'}}</span>
-  </li>
-}
-
-</ul>
-
+<div class="relative search-container">
+  <div class="relative w-80">
+    <input
+      type="text"
+      class="pl-2 h-8 text-white border border-gray-700 rounded-md w-full bg-black/60 focus:outline-none focus:border-white pr-8"
+      placeholder="Buscar..."
+      [(ngModel)]="searchQuery"
+    />
+    <button
+      *ngIf="searchQuery()"
+      type="button"
+      (click)="searchQuery.set('')"
+      class="absolute right-1 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white focus:outline-none text-2xl leading-none"
+      aria-label="Limpiar búsqueda"
+    >
+      &times;
+    </button>
+  </div>
+  <ul
+    class="absolute z-50 w-full rounded-md shadow-lg search-results bg-black/90 top-full left-0"
+  >
+    @for (movie of movies().slice(0, 10); track movie.id) {
+    <li
+      tabindex="0"
+      (click)="goToDetails(movie.id)"
+      (keyup.enter)="goToDetails(movie.id)"
+      class="flex items-center p-2 cursor-pointer rounded-md hover:bg-netflix-red/20"
+    >
+      <img
+        [src]="getImageUrl(movie.poster_path)"
+        alt="{{ movie.title }}"
+        class="w-12 h-12 mr-2"
+      />
+      <span>{{ movie.title }} - {{ movie.release_date | date : "yyyy" }}</span>
+    </li>
+    }
+  </ul>
 </div>
