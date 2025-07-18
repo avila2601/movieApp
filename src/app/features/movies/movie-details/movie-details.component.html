@@ -1,34 +1,43 @@
-<div class="min-h-screen p-4 md:p-8">
-  <div class="max-w-4xl mx-auto mt-12">
+<div class="min-h-screen p-4 md:p-8 mt-8">
+  <div class="max-w-4xl mx-auto mt-4">
     <!-- TODO: Movie has value -->
-     <button (click)="goBack()"
-     class="flex items-center gap-2 mb-8 transition-color text-netflix-red hover:text-netflix-red/80"> Go back
-     </button>
+    @if(movie) { @let movieData = movie.value();
 
-     @if(movie) {
-      @let movieData = movie.value();
-
-       <div class="grid gap-8  mt-12 md:grid-cols-2">
-         <img [src]="getImageUrl(movieData?.poster_path ?? null)" [alt]="movieData?.title" class="w-full runded-lg">
-
-
-        <div>
-          <h1 class="mb-4 text-4lx font-bold">
-            {{ movieData?.title }}
-          </h1>
-          <p class="mb-4 text-gray-300">{{ movieData?.overview }}</p>
-          <div class="space-y-2">
-            <p>
-              <span class="font-bold">Release Date:</span>
-              {{ movieData?.release_date | date }}
-            </p>
-            <p>
-              <span class="font-bold">Rating:</span>
-              {{ movieData?.vote_average | number:'1.1-1' }}/10
-            </p>
-          </div>
-        </div>
+    <div class="grid gap-8 mt-4 md:grid-cols-2 items-start">
+      <div
+        class="flex flex-col md:flex-row items-start md:items-start justify-start"
+      >
+        <button
+          (click)="goBack()"
+          class="flex items-center justify-center gap-2 mb-2 md:mb-0 md:mr-4 px-2 py-1 min-w-[90px] rounded bg-white/10 border border-netflix-red text-netflix-red font-semibold shadow hover:bg-netflix-red hover:text-white transition-colors duration-200 text-center"
+        >
+          Go back
+        </button>
+        <img
+          [src]="getImageUrl(movieData?.poster_path ?? null)"
+          [alt]="movieData?.title"
+          class="w-full h-auto rounded-lg max-w-sm"
+        />
       </div>
 
-      }
+      <div class="col-span-2 md:col-span-1 md:pl-24">
+        <h1 class="mb-4 text-4lx font-bold">
+          {{ movieData?.title }}
+        </h1>
+        <p class="mb-4 text-gray-300">{{ movieData?.overview }}</p>
+        <div class="space-y-2">
+          <p>
+            <span class="font-bold">Release Date:</span>
+            {{ movieData?.release_date | date }}
+          </p>
+          <p>
+            <span class="font-bold">Rating:</span>
+            {{ movieData?.vote_average | number : "1.1-1" }}/10
+          </p>
+        </div>
+      </div>
+    </div>
+
+    }
+  </div>
 </div>

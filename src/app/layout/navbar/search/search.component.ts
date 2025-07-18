@@ -36,8 +36,36 @@ export class SearchComponent {
   // }
 
   goToDetails(movieId: string): void {
-    this._router.navigate(['/movies', movieId]);
+    this._router.navigate(['/movies', movieId]).then(() => {
+      setTimeout(() => {
+        this.smoothScrollTo(window.innerHeight - 140, 800);
+      }, 100);
+    });
     this._clearQuery();
+  }
+
+  /**
+   * Desplazamiento suave personalizado
+   * @param targetY posición Y a la que desplazarse
+   * @param duration duración en ms
+   */
+  private smoothScrollTo(targetY: number, duration: number) {
+    const startY = window.scrollY;
+    const change = targetY - startY;
+    const startTime = performance.now();
+    const animateScroll = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      window.scrollTo(0, startY + change * this.easeInOutQuad(progress));
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      }
+    };
+    requestAnimationFrame(animateScroll);
+  }
+
+  private easeInOutQuad(t: number) {
+    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
   }
 
   private _clearQuery(): void {
