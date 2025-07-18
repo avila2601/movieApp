@@ -23,6 +23,17 @@ export class MovieDetailsComponent  {
     loader: ()=> this._moviesService.getMovieById(this.movieId())
   })
 
+  verTrailer(): void {
+    this._moviesService.getMovieTrailer(this.movieId()).subscribe((res) => {
+      const trailer = res.results.find((v: any) => v.site === 'YouTube' && v.type === 'Trailer');
+      if (trailer) {
+        window.open(`https://www.youtube.com/watch?v=${trailer.key}`, '_blank');
+      } else {
+        alert('No se encontró tráiler para esta película.');
+      }
+    });
+  }
+
   goBack(): void {
     this._router.navigate(['/..']).then(() => {
       const scroll = sessionStorage.getItem('movie-scroll');

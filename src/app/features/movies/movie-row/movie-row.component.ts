@@ -2,6 +2,7 @@ import { Component, inject, input } from '@angular/core';
 import { Movie } from '../models/movies.interface';
 import { ImageService } from '../../../shared/image.service';
 import { Router } from '@angular/router';
+import { MoviesService } from '../movies.service';
 
 @Component({
   selector: 'app-movie-row',
@@ -32,6 +33,7 @@ export class MovieRowComponent {
 
   private readonly _imageService = inject(ImageService);
   private readonly _router = inject(Router);
+  private readonly _moviesService = inject(MoviesService);
 
   getImageUrl(posterPath: string): string {
     return this._imageService.getImageUrl(posterPath);
@@ -42,6 +44,17 @@ export class MovieRowComponent {
       setTimeout(() => {
         this.smoothScrollTo(window.innerHeight - 130, 800);
       }, 100);
+    });
+  }
+
+  verTrailer(movieId: string): void {
+    this._moviesService.getMovieTrailer(movieId).subscribe((res) => {
+      const trailer = res.results.find((v: any) => v.site === 'YouTube' && v.type === 'Trailer');
+      if (trailer) {
+        window.open(`https://www.youtube.com/watch?v=${trailer.key}`, '_blank');
+      } else {
+        alert('No se encontró tráiler para esta película.');
+      }
     });
   }
 

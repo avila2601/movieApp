@@ -1,4 +1,4 @@
-<div class="px-4 mt-8 md:px-16">
+<div class="w-full mt-8 px-4">
   <h2 class="mb-4 text-xl font-semibold text-white md:text-2xl">
     {{ title() }}
   </h2>
@@ -42,7 +42,10 @@
           >
             <h3 class="font-semibold">{{ movie.title }}</h3>
             <div class="flex space-x-2 justify-center mt-2">
-              <button class="p-2 rounded-md bg-white/20 hover:bg-white/40">
+              <button
+                class="p-2 rounded-md bg-white/20 hover:bg-white/40"
+                (click)="verTrailer(movie.id)"
+              >
                 ▶️ Ver Trailer
               </button>
               <button

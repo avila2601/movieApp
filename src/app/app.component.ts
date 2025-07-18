@@ -18,7 +18,7 @@ export class AppComponent {
 
   constructor() {
     window.addEventListener('scroll', () => {
-      this.showButton = window.scrollY > 100;
+      this.showButton = window.scrollY > 800;
     });
   }
 
