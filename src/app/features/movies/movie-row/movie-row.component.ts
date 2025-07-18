@@ -10,6 +10,25 @@ import { Router } from '@angular/router';
 export class MovieRowComponent {
   title = input<string>('Trending')
   movies = input.required<Movie[]>()
+  page = 0;
+  pageSize = 4;
+
+  get pagedMovies(): Movie[] {
+    const start = this.page * this.pageSize;
+    return this.movies().slice(start, start + this.pageSize);
+  }
+
+  nextPage(): void {
+    if ((this.page + 1) * this.pageSize < this.movies().length) {
+      this.page++;
+    }
+  }
+
+  prevPage(): void {
+    if (this.page > 0) {
+      this.page--;
+    }
+  }
 
   private readonly _imageService = inject(ImageService);
   private readonly _router = inject(Router);
