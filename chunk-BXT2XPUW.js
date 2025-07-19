@@ -1,0 +1,1 @@
+import"./chunk-2VMXMS7J.js";var t=[{path:"",loadComponent:()=>import("./chunk-4TB6DUN4.js").then(o=>o.MoviesComponent)},{path:":movieId",loadComponent:()=>import("./chunk-P5MOERXN.js").then(o=>o.MovieDetailsComponent)}];export{t as moviesRoutes};
