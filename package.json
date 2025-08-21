@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:gh-pages": "ng build --base-href /movieApp/",
+    "deploy": "ng deploy --base-href /movieApp/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
