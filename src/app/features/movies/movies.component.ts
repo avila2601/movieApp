@@ -1,5 +1,5 @@
 import { Component, computed, HostListener, inject } from '@angular/core';
-import { RouterLink, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MovieRowComponent } from "./movie-row/movie-row.component";
 import { MoviesService } from './movies.service';
@@ -7,7 +7,7 @@ import { MoviesService } from './movies.service';
 
 @Component({
   selector: 'app-movies',
-  imports: [RouterLink, MovieCardComponent, MovieRowComponent, MovieRowComponent],
+  imports: [MovieCardComponent, MovieRowComponent, MovieRowComponent],
   templateUrl: './movies.component.html',
 })
 export class MoviesComponent  {
