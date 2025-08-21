@@ -19,6 +19,20 @@
       <p class="mb-8 text-lg text-white px-8 md:px-32">
         {{ movieData.overview }}
       </p>
+      <div class="flex flex-col sm:flex-row gap-4 px-8 md:px-32">
+        <button
+          (click)="verTrailer()"
+          class="px-6 py-3 rounded-md bg-netflix-red hover:bg-netflix-red/80 text-white font-semibold transition-colors duration-200 flex items-center justify-center gap-2"
+        >
+          ▶️ Ver Trailer
+        </button>
+        <button
+          (click)="masInformacion()"
+          class="px-6 py-3 rounded-md bg-white/20 hover:bg-white/40 text-white font-semibold transition-colors duration-200"
+        >
+          Más información
+        </button>
+      </div>
     </div>
   </div>
 </div>
